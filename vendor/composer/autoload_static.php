@@ -20,6 +20,10 @@ class ComposerStaticInitfb01a122b19237e45e06527afca5d1c2
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
+        'O' => 
+        array (
+            'OAT\\' => 4,
+        ),
         'I' => 
         array (
             'Interop\\Container\\' => 18,
@@ -42,6 +46,10 @@ class ComposerStaticInitfb01a122b19237e45e06527afca5d1c2
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'OAT\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Interop\\Container\\' => 
         array (

@@ -3,7 +3,9 @@ OAT Practical Exercise - get test takers api - rest
 
 As a Backend developer you choose to focus on your speciality and work on the server side.
 
-As a reminder, the goal of the backend exercise is to create a REST web service that returns a list of users. You have 2 files that contain data to help you (testtaker.json and testtaker.csv) to test your service. Both files contain the same data, they are just provided as a potential source to feed your web service.
+As a reminder, the goal of the backend exercise is to create a REST web service that returns a list of users.
+You have 2 files that contain data to help you (testtaker.json and testtaker.csv) to test your service.
+Both files contain the same data, they are just provided as a potential source to feed your web service.
 
 Nice to have: As per the generalisation/flexibility, you may want to take into account that the source of the data JSON or CSV might change in the future.
 
