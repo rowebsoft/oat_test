@@ -33,7 +33,12 @@ class GetUsersList
         $this->filter = $container->get(Filter::class);
     }
 
-
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return static
+     */
     public function __invoke(Request $request, Response $response, array $args = [])
     {
         $filters = $this->filter->extractFilters($request->getQueryParams());

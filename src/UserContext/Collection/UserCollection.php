@@ -10,6 +10,10 @@ use Slim\Collection;
  */
 class UserCollection extends Collection
 {
+    /**
+     * @param array $userList
+     * @return UserCollection
+     */
     public static function create(array $userList)
     {
         $collection = new self();
@@ -20,6 +24,9 @@ class UserCollection extends Collection
         return $collection;
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         $users = [];

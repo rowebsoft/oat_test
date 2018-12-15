@@ -49,11 +49,12 @@ class UserList
         $data = $this->getData();
         if (empty($filters)) {
             return $data;
+        } elseif (!empty($filters[Filter::FILTER_NAME])) {
+            $data = $this->filterDataByName($data, $filters[Filter::FILTER_NAME]);
         }
 
         $offset = !empty($filters[Filter::OFFSET]) ? (int)$filters[Filter::OFFSET] : Filter::DEFAULT_OFFSET;
         $limit = !empty($filters[Filter::LIMIT]) ? (int)$filters[Filter::LIMIT] : Filter::DEFAULT_LIMIT;
-
         $data = array_slice($data, $offset, $limit, true);
 
         return $data;
@@ -65,5 +66,22 @@ class UserList
     private function getData()
     {
         return $this->repository->getData();
+    }
+
+    /**
+     * @param array $data
+     * @param string $name
+     * @return array
+     */
+    private function filterDataByName(array $data, $name)
+    {
+        $filteredData = [];
+        foreach ($data as $user) {
+            if ($user[User::FIRSTNAME] == $name || $user[User::LASTNAME] == $name) {
+                $filteredData[] = $user;
+            }
+        }
+
+        return $filteredData;
     }
 }

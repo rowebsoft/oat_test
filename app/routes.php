@@ -1,9 +1,9 @@
 <?php
-
 return [
     'index' => [
         'pattern' => '/',
         'action' => function ($request, $response, $args) {
+            /** @var Slim\Http\Response $response*/
             return $response->withJson(['status' => 'OK']);
         }
     ],

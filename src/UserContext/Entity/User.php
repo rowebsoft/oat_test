@@ -122,7 +122,7 @@ final class User
     {
         return [
             static::LOGIN       => $this->login,
-//            static::PASSWORD => $this->password,
+//            static::PASSWORD => $this->password,#this is deliberated because i don't think a api should return password
             static::TITLE       => $this->title,
             static::FIRSTNAME   => $this->firstName,
             static::LASTNAME    => $this->lastName,
