@@ -121,15 +121,15 @@ final class User
     public function toArray()
     {
         return [
-            static::LOGIN => $this->login,
-            static::PASSWORD => $this->password,
-            static::TITLE => $this->title,
-            static::FIRSTNAME => $this->firstName,
-            static::LASTNAME => $this->lastName,
-            static::GENDER => $this->gender,
-            static::EMAIL => $this->email,
-            static::PICTURE => $this->picture,
-            static::ADDRESS => $this->address,
+            static::LOGIN       => $this->login,
+//            static::PASSWORD => $this->password,
+            static::TITLE       => $this->title,
+            static::FIRSTNAME   => $this->firstName,
+            static::LASTNAME    => $this->lastName,
+            static::GENDER      => $this->gender,
+            static::EMAIL       => $this->email,
+            static::PICTURE     => $this->picture,
+            static::ADDRESS     => $this->address,
         ];
     }
 }

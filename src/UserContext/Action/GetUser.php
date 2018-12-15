@@ -3,11 +3,9 @@ namespace OAT\UserContext\Action;
 
 use Interop\Container\Exception\ContainerException;
 use OAT\UserContext\Entity\User;
-use OAT\UserContext\Service\UserJsonList;
 use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use OAT\UserContext\Service\UserCSVList;
 use OAT\UserContext\Service\UserList;
 
 class GetUser
@@ -26,8 +24,7 @@ class GetUser
      */
     public function __construct(Container $container)
     {
-//        $this->user = $container->get(UserCSVList::class);#this can be also used 
-        $this->user = $container->get(UserJsonList::class);
+        $this->user = $container->get(UserList::class);
     }
 
     /**

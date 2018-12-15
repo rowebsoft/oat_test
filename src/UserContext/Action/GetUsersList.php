@@ -1,60 +1,57 @@
 <?php
-
 namespace OAT\UserContext\Action;
 
-
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Interop\Container\Exception\ContainerException;
+use OAT\UserContext\Service\Filter;
 use Slim\Container;
+use Slim\Http\Request;
 use Slim\Http\Response;
+use OAT\UserContext\Service\UserList;
+use OAT\UserContext\Collection\UserCollection;
 
-
-class GetUsers extends AbstractAction
+class GetUsersList
 {
 
-    const FILTER_NAME = 'name';
-    const OFFSET = 'offset';
-    const LIMIT = 'limit';
-
-
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args = [])
-    {
-
-        $filters = $this->extractFilters($args);
-
-        $users = $this->getUsers($filters);
-
-        /** @var Response $response */
-        return $response->withJson($users);
-    }
+    /**
+     * @var UserList
+     */
+    private $user;
 
     /**
-     * @param array $args
-     * @return array
+     * @var Filter
      */
-    private function extractFilters(array $args)
+    private $filter;
+
+    /**
+     * @param Container $container
+     *
+     * @throws ContainerException
+     */
+    public function __construct(Container $container)
     {
-        $filters = [];
-        if (!empty($params[self::LIMIT])) {
-            $filters[self::LIMIT] = $params[self::LIMIT];
+        $this->user = $container->get(UserList::class);
+        $this->filter = $container->get(Filter::class);
+    }
+
+
+    public function __invoke(Request $request, Response $response, array $args = [])
+    {
+        $filters = $this->filter->extractFilters($request->getQueryParams());
+        $users = $this->getUsers($filters);
+        if (!empty($users)) {
+            $usersData = UserCollection::create($users);
+            return $response->withJson($usersData->toArray());
         }
 
-        if (!empty($params[self::OFFSET])) {
-            $filters[self::OFFSET] = $params[self::OFFSET];
-        }
-
-        if (!empty($params[self::FILTER_NAME])) {
-            $filters[self::FILTER_NAME] = $params[self::FILTER_NAME];
-        }
-
-        return $filters;
+        return $response->withJson('Invalid request!');
     }
 
     /**
      * @param array $filters
+     * @return array
      */
     private function getUsers(array $filters)
     {
-
+        return $this->user->findbyFilters($filters);
     }
 }

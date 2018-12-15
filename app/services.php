@@ -1,14 +1,16 @@
 <?php
 
-use OAT\UserContext\Service\UserJsonList;
+use OAT\UserContext\Service\Filter;
 use Slim\Container;
-use OAT\UserContext\Service\UserCSVList;
+use OAT\UserContext\Service\UserList;
+use OAT\UserContext\Repository\UserCSVList;
+use OAT\UserContext\Repository\UserJsonList;
 
 return [
-    UserCSVList::class => function (Container $container) {
-        return new UserCSVList();
+    UserList::class => function (Container $container) {
+        return new UserList(new UserJsonList());
     },
-    UserJsonList::class => function (Container $container) {
-        return new UserJsonList();
+    Filter::class => function (Container $container) {
+        return new Filter();
     },
 ];
