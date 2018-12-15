@@ -44,3 +44,17 @@ Rows limit
 Define the number of expected rows the service should return
 Rows offset
 
+how to use
+=======
+    > git clone https://github.com/rowebsoft/oat_test.git oat_test
+    > cd oat_test
+    > pwd #this will display the folder
+    > create vhost with DocumentRoot /var/www/html/oat_test/public/ or upper display path
+    > restart apache / ngnix
+    > go to domain.tld/users
+
+
+Note
+=======
+the development uses slim3 framework
+https://www.slimframework.com/docs/
